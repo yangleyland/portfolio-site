@@ -7,7 +7,7 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://leerob.com"),
+  metadataBase: new URL("https://leylnd.me"),
   alternates: {
     canonical: "/",
   },
