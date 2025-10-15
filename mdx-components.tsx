@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
+import { GitHubStats } from './app/components/api-data';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -107,6 +108,7 @@ const components = {
       {...props}
     />
   ),
+  GitHubStats,
 };
 
 declare global {
