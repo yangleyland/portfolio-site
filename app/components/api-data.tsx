@@ -1,5 +1,48 @@
 import React from 'react';
 
+export async function WafflrUsers() {
+  try {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error('Supabase credentials not found');
+    }
+
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/public_users?select=count`,
+      {
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Prefer': 'count=exact'
+        },
+        next: { revalidate: 3600 }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch Wafflr user count');
+    }
+
+    const countHeader = response.headers.get('content-range');
+    const count = countHeader ? parseInt(countHeader.split('/')[1]) : 0;
+
+    return (
+      <span className="text-gray-800 dark:text-zinc-300">
+        {count} users
+      </span>
+    );
+  } catch (error) {
+    console.error('Wafflr Users Error:', error);
+    return (
+      <span className="text-gray-800 dark:text-zinc-300">
+        0 users
+      </span>
+    );
+  }
+}
+
 export async function GitHubStats({ username }: { username: string }) {
   try {
     const token = process.env.GITHUB_TOKEN;
