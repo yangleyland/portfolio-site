@@ -40,7 +40,7 @@ export default function RootLayout({
 
 function Footer() {
   const links = [
-    { name: "@leylnd", url: "https://instagram.com/leylnd" },
+    { name: "@leylnd", url: "https://x.com/leylndd" },
     { name: "linkedin", url: "https://www.linkedin.com/in/leyland-yang" },
     { name: "github", url: "https://github.com/yangleyland" },
   ];
